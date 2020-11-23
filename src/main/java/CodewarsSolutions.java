@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.regex.MatchResult;
 import java.util.stream.Collectors;
 
-public class Test2 {
+public class CodewarsSolutions {
     public static void main(String[] args){
         String str = "This is TEst StrinG";
         System.out.println(alternateCase(str));
