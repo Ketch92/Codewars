@@ -5,9 +5,9 @@ import java.util.regex.MatchResult;
 import java.util.stream.Collectors;
 
 public class CodewarsSolutions {
+
     public static void main(String[] args){
-        String str = "This is TEst StrinG";
-        System.out.println(alternateCase(str));
+        System.out.println(findScreenHeight(1024, "4:3"));
     }
     
     static String alternateCase(final String string) {
@@ -144,6 +144,7 @@ public class CodewarsSolutions {
 
         return alfaBat;
     }
+
     public static int longestRepetitionOfChar(String s){
 
         String distinct = java.util.Arrays.stream(s.split("")).
@@ -615,6 +616,7 @@ public class CodewarsSolutions {
             return sillyAddition(num1, num2);
         }
     }
+
     private static int sillyAddition(int num1, int num2){
         String[] str1 = new StringBuilder(num1+"").reverse().toString().split("");
         String[] str2 =  new StringBuilder(num2+"").reverse().toString().split("");
@@ -637,9 +639,11 @@ public class CodewarsSolutions {
     public static int randomInt(int upperLimit){
         return (int)Math.round(Math.random()*upperLimit);
     }
+
     public static int randomInt(int lowerLimit, int upperLimit){
         return (int)Math.round(lowerLimit+Math.random()*(upperLimit-lowerLimit));
     }
+
     public static String randomChar(){
         return java.lang.Character.toString(randomInt(32, 126));
     }
@@ -651,6 +655,7 @@ public class CodewarsSolutions {
         }
         return result;
     }
+
     public static String SongDecoder (String song){
         song = song.replaceAll("WUB", " ").replaceAll("  ", " ");
         return song.contains("  ") || song.contains("WUB") ? SongDecoder(song).trim() : song.trim();
@@ -661,5 +666,10 @@ public class CodewarsSolutions {
         if(string.isEmpty() || string.length()==1) return true;
         return !string.endsWith(string.charAt(0)+"") ? false : isPalindrome(string.substring(1, string.length()-1));
 
+    }
+
+    public static String findScreenHeight(int width, String ratio) {
+        String[] aspectRatioArray = ratio.split(":");
+        return width+"x"+Integer.parseInt(aspectRatioArray[1])*width/Integer.parseInt(aspectRatioArray[0]);
     }
 }
