@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class CodewarsSolutions {
 
     public static void main(String[] args){
-        System.out.println(findScreenHeight(1024, "4:3"));
+        System.out.println(multiTable(5));
     }
     
     static String alternateCase(final String string) {
@@ -662,14 +662,21 @@ public class CodewarsSolutions {
     }
 
     public static boolean isPalindrome(String string) {
-
         if(string.isEmpty() || string.length()==1) return true;
         return !string.endsWith(string.charAt(0)+"") ? false : isPalindrome(string.substring(1, string.length()-1));
-
     }
 
     public static String findScreenHeight(int width, String ratio) {
         String[] aspectRatioArray = ratio.split(":");
         return width+"x"+Integer.parseInt(aspectRatioArray[1])*width/Integer.parseInt(aspectRatioArray[0]);
+    }
+
+    public static String multiTable(int num) {
+        String result = "";
+        for(int i = 1; i <=10; i++){
+            result = new StringBuilder(result).append(i).append(" * ").
+                    append(num). append(" = ").append(i*num+"\n").toString();
+        }
+        return new StringBuilder(result).deleteCharAt(result.length()-1).toString();
     }
 }
