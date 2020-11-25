@@ -656,9 +656,9 @@ public class CodewarsSolutions {
         return result;
     }
 
-    public static String SongDecoder (String song){
+    public static String songDecoder (String song){
         song = song.replaceAll("WUB", " ").replaceAll("  ", " ");
-        return song.contains("  ") || song.contains("WUB") ? SongDecoder(song).trim() : song.trim();
+        return song.contains("  ") || song.contains("WUB") ? songDecoder(song).trim() : song.trim();
     }
 
     public static boolean isPalindrome(String string) {
@@ -678,5 +678,15 @@ public class CodewarsSolutions {
                     append(num). append(" = ").append(i*num+"\n").toString();
         }
         return new StringBuilder(result).deleteCharAt(result.length()-1).toString();
+    }
+
+
+    /*
+    Codewars - Form the largest
+    https://www.codewars.com/kata/5a4ea304b3bfa89a9900008e
+     */
+    public static long maxNumber(long n) {
+        return Long.parseLong(java.util.Arrays.stream(Long.toString(n).split("")).
+                sorted(java.util.Collections.reverseOrder()).collect(java.util.stream.Collectors.joining()));
     }
 }
