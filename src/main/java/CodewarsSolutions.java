@@ -693,14 +693,7 @@ public class CodewarsSolutions {
         int sum = 0;
 
         while (length<sequence.length/2+1 && sum<n){
-            while (begin+length<sequence.length && sum<n){
-                sum = Arrays.stream(Arrays.copyOfRange(sequence, begin, begin+length)).sum();
-                if(sum == n){
-                    return true;}
-                begin += 1;
-            }
-            length += 1;
-            begin = 0;
+
         }
 
         return false;
