@@ -1,17 +1,16 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.regex.MatchResult;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class CodewarsSolutions {
-    
+
     public static void main(String[] args){
-        System.out.println(consecutiveDucks(512));
+        System.out.println(maxNumber(123L));
     }
-    
+
     static String alternateCase(final String string) {
-        return java.util.Arrays.stream(string.split("")).map(i -> i.toLowerCase().equals(i)  ? i.toUpperCase() : i.toLowerCase()).
+        return java.util.Arrays.stream(string.split("")).map(i -> i.toLowerCase().equals(i) ? i.toUpperCase() : i.toLowerCase()).
                 collect(java.util.stream.Collectors.joining());
     }
 
@@ -682,20 +681,11 @@ public class CodewarsSolutions {
 
     public static boolean consecutiveDucks(int n) {
 
-        int[] sequence = new int[n+1];
-
-        for(int i = 1; i<=n; i++){
-            sequence[i] = i;
-        }
-
-        int begin = 0;
-        int length = 2;
-        int sum = 0;
-
-        while (length<sequence.length/2+1 && sum<n){
-
-        }
-
         return false;
+    }
+
+    public static long maxNumber(long n) {
+        return Long.parseLong(java.util.Arrays.stream(Long.toString(n).split("")).
+                sorted(java.util.Collections.reverseOrder()).collect(java.util.stream.Collectors.joining()));
     }
 }
