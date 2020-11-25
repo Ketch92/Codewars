@@ -8,6 +8,7 @@ public class CodewarsSolutions {
 
     public static void main(String[] args){
         System.out.println(multiTable(5));
+
     }
     
     static String alternateCase(final String string) {
