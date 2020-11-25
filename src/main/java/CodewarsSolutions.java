@@ -5,17 +5,17 @@ import java.util.regex.MatchResult;
 import java.util.stream.Collectors;
 
 public class CodewarsSolutions {
-
+    
     public static void main(String[] args){
-        System.out.println(multiTable(5));
+        System.out.println(consecutiveDucks(512));
     }
     
     static String alternateCase(final String string) {
-        return java.util.Arrays.stream(string.split("")).map(i -> i.toLowerCase() == i ? i.toUpperCase() : i.toLowerCase()).
+        return java.util.Arrays.stream(string.split("")).map(i -> i.toLowerCase().equals(i)  ? i.toUpperCase() : i.toLowerCase()).
                 collect(java.util.stream.Collectors.joining());
     }
 
-    public static String [] solve(String [] arr){
+    public static String [] solve(String [] arr) {
         String[] streets = new String[arr.length];
         String[] directions = new String[arr.length];
         int i = 0;
@@ -366,7 +366,7 @@ public class CodewarsSolutions {
         return (seconds-(getYears(seconds)*(24*3600*365)+getDays(seconds)*(24*3600)))/3600;
     }
 
-    private static int getMinutes(int seconds){
+    private static int getMinutes(int seconds) {
         return (seconds-(getYears(seconds)*(24*3600*365)+getDays(seconds)*(24*3600)+getHours(seconds)*3600))/60;
     }
 
@@ -678,5 +678,31 @@ public class CodewarsSolutions {
                     append(num). append(" = ").append(i*num+"\n").toString();
         }
         return new StringBuilder(result).deleteCharAt(result.length()-1).toString();
+    }
+
+    public static boolean consecutiveDucks(int n) {
+
+        int[] sequence = new int[n+1];
+
+        for(int i = 1; i<=n; i++){
+            sequence[i] = i;
+        }
+
+        int begin = 0;
+        int length = 2;
+        int sum = 0;
+
+        while (length<sequence.length/2+1 && sum<n){
+            while (begin+length<sequence.length && sum<n){
+                sum = Arrays.stream(Arrays.copyOfRange(sequence, begin, begin+length)).sum();
+                if(sum == n){
+                    return true;}
+                begin += 1;
+            }
+            length += 1;
+            begin = 0;
+        }
+
+        return false;
     }
 }
