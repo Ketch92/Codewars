@@ -689,4 +689,33 @@ public class CodewarsSolutions {
         return Long.parseLong(java.util.Arrays.stream(Long.toString(n).split("")).
                 sorted(java.util.Collections.reverseOrder()).collect(java.util.stream.Collectors.joining()));
     }
+    /*
+    Codewars - Consecutive ducks task NOT SOLVED
+    https://www.codewars.com/kata/5dae2599a8f7d90025d2f15f
+     */
+
+    public static boolean consecutiveDucks(int n) {
+        int[] sequence = new int[n+1];
+
+        for(int i = 1; i<=n; i++){
+            sequence[i] = i;
+        }
+
+        int begin = 0;
+        int length = 2;
+        int sum = 0;
+
+        while (length<sequence.length && sum<n){
+            while (begin+length<sequence.length && sum<n){
+                sum = java.util.Arrays.stream(java.util.Arrays.copyOfRange(sequence, begin, begin+length)).sum();
+                if(sum == n){
+                    return true;}
+                begin += 1;
+            }
+            length += 1;
+            begin = 0;
+        }
+
+        return false;
+    }
 }
