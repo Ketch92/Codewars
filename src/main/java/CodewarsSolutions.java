@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class CodewarsSolutions {
 
     public static void main(String[] args){
-        System.out.println(multiTable(5));
+        System.out.println(removeParentheses("(first) (second group) (third group)"));
     }
     
     static String alternateCase(final String string) {
@@ -689,4 +689,25 @@ public class CodewarsSolutions {
         return Long.parseLong(java.util.Arrays.stream(Long.toString(n).split("")).
                 sorted(java.util.Collections.reverseOrder()).collect(java.util.stream.Collectors.joining()));
     }
+
+    /*
+    In this kata you are given a string for example:
+    "example(unwanted thing)example"
+    Your task is to remove everything inside the parentheses as well as the parentheses themselves.
+    The example above would return:
+    "exampleexample"
+    https://www.codewars.com/kata/5f7c38eb54307c002a2b8cc8/train/java
+     */
+    public static String removeParentheses(final String str) {
+
+        String newStr = str.replaceFirst("\\([^()]*\\)", "");
+
+        if (!newStr.contains("(")) {
+            return newStr;
+        }
+
+        return removeParentheses(newStr);
+    }
+
+
 }
