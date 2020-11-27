@@ -7,7 +7,8 @@ import java.util.stream.Collectors;
 public class CodewarsSolutions {
 
     public static void main(String[] args){
-        System.out.println(removeParentheses("(first) (second group) (third group)"));
+        System.out.println();
+        getXO("xxooohgjkdsafkhda");
     }
     
     static String alternateCase(final String string) {
@@ -709,5 +710,10 @@ public class CodewarsSolutions {
         return removeParentheses(newStr);
     }
 
-
+    public static boolean getXO (String str) {
+        str = str.toLowerCase().replaceAll("[^ox]", "");
+        return !str.isEmpty() ? str.replaceAll("x", "").
+                length() == str.replaceAll("o", "").
+                length() : true;
+    }
 }
