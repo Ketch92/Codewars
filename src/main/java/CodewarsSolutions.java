@@ -8,7 +8,8 @@ import java.util.stream.Collectors;
 public class CodewarsSolutions {
 
     public static void main(String[] args){
-        System.out.println(maxBall(85));
+        System.out.println(meeting("Fred:Corwill;Wilfred:Corwill;" +
+                "Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill"));
     }
     
     static String alternateCase(final String string) {
@@ -748,5 +749,17 @@ public class CodewarsSolutions {
         }
 
         return list.indexOf(java.util.Collections.max(list));
+    }
+
+    /*
+    https://www.codewars.com/kata/59df2f8f08c6cec835000012/train/java
+    "Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;
+    Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill"
+    "(CORWILL, ALFRED)(CORWILL, FRED)(CORWILL, RAPHAEL)(CORWILL, WILFRED)(TORNBULL, BARNEY)(TORNBULL, BETTY)(TORNBULL, BJON)"
+     */
+    public static String meeting(String s){
+       return java.util.Arrays.stream(s.toUpperCase().split(";"))
+                .map(i -> "("+i.split(":")[1] + ", " + i.split(":")[0]+")")
+                .sorted().collect(java.util.stream.Collectors.joining());
     }
 }
