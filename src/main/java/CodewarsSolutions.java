@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class CodewarsSolutions {
 
     public static void main(String[] args){
-        System.out.println(Arrays.toString(sumParts(new int[]{0, 1, 3, 6, 10})));
+        System.out.println(scramble("rkqodlw","world"));
     }
     
     static String alternateCase(final String string) {
@@ -793,5 +793,15 @@ public class CodewarsSolutions {
         }
 
         return result;
+    }
+
+    /*
+    https://www.codewars.com/kata/55c04b4cc56a697bb0000048/train/java
+     */
+    public static boolean scramble(String str1, String str2) {
+        for (String s: str1.split("")) {
+            str2 = str2.replaceFirst(s, "");
+        }
+        return str2.isEmpty();
     }
 }
