@@ -8,8 +8,7 @@ import java.util.stream.Collectors;
 public class CodewarsSolutions {
 
     public static void main(String[] args){
-        System.out.println(Arrays.toString(inArray(new String[]{"arp", "live", "strong"},
-                new String[]{"lively", "alive", "harp", "sharp", "armstrong"})));
+        System.out.println(Arrays.toString(sumParts(new int[]{0, 1, 3, 6, 10})));
     }
     
     static String alternateCase(final String string) {
@@ -776,5 +775,23 @@ public class CodewarsSolutions {
         return java.util.Arrays.stream(array1)
                 .filter(i -> String.join("", array2).contains(i))
                 .distinct().sorted().toArray(String[]::new);
+    }
+
+    /*
+    https://www.codewars.com/kata/5ce399e0047a45001c853c2b/train/java
+
+     */
+    public static int[] sumParts(int[] ls) {
+        int[] result = new int[ls.length+1];
+        int i = 0;
+
+        result[i] = java.util.Arrays.stream(ls).sum();
+
+        while (i<ls.length){
+            result[i+1] = result[i] - ls[i];
+            i += 1;
+        }
+
+        return result;
     }
 }
