@@ -7,8 +7,7 @@ import java.util.stream.Collectors;
 public class CodewarsSolutions {
 
     public static void main(String[] args){
-        System.out.println();
-        getXO("xxooohgjkdsafkhda");
+        System.out.println(someString(new String[]{"jkfda", "hfjkdad", "hjfdahjfda"}));
     }
     
     static String alternateCase(final String string) {
@@ -715,5 +714,12 @@ public class CodewarsSolutions {
         return !str.isEmpty() ? str.replaceAll("x", "").
                 length() == str.replaceAll("o", "").
                 length() : true;
+    }
+
+    public static String someString(String[] arrayString) {
+        String result = java.util.Arrays.stream(arrayString).collect(Collectors.joining(" "));
+        if(result.isEmpty()) {return "We have no words here!";}
+        return  result.replaceFirst(result.charAt(0)+"",
+                (result.charAt(0)+"").toUpperCase()).concat(".");
     }
 }
