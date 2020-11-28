@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.MatchResult;
 import java.util.stream.Collectors;
@@ -7,7 +8,7 @@ import java.util.stream.Collectors;
 public class CodewarsSolutions {
 
     public static void main(String[] args){
-        System.out.println(someString(new String[]{"jkfda", "hfjkdad", "hjfdahjfda"}));
+        System.out.println(maxBall(85));
     }
     
     static String alternateCase(final String string) {
@@ -656,14 +657,14 @@ public class CodewarsSolutions {
         return result;
     }
 
-    public static String songDecoder (String song){
+    public static String songDecoder (String song) {
         song = song.replaceAll("WUB", " ").replaceAll("  ", " ");
         return song.contains("  ") || song.contains("WUB") ? songDecoder(song).trim() : song.trim();
     }
 
     public static boolean isPalindrome(String string) {
-        if(string.isEmpty() || string.length()==1) return true;
-        return !string.endsWith(string.charAt(0)+"") ? false : isPalindrome(string.substring(1, string.length()-1));
+        if (string.isEmpty() || string.length()==1) return true;
+        return string.endsWith(string.charAt(0) + "") && isPalindrome(string.substring(1, string.length() - 1));
     }
 
     public static String findScreenHeight(int width, String ratio) {
@@ -711,9 +712,9 @@ public class CodewarsSolutions {
 
     public static boolean getXO (String str) {
         str = str.toLowerCase().replaceAll("[^ox]", "");
-        return !str.isEmpty() ? str.replaceAll("x", "").
+        return str.isEmpty() || str.replaceAll("x", "").
                 length() == str.replaceAll("o", "").
-                length() : true;
+                length();
     }
 
     public static String someString(String[] arrayString) {
@@ -721,5 +722,31 @@ public class CodewarsSolutions {
         if(result.isEmpty()) {return "We have no words here!";}
         return  result.replaceFirst(result.charAt(0)+"",
                 (result.charAt(0)+"").toUpperCase()).concat(".");
+    }
+
+    /*
+    You throw a ball vertically upwards with an initial speed v (in km per hour).
+    The height h of the ball at each time t is given by h = v*t - 0.5*g*t*t where
+    g is Earth's gravity (g ~ 9.81 m/s**2). A device is recording at every tenth of second
+    the height of the ball. For example with v = 15 km/h the device gets something of the
+    ollowing form: (0, 0.0), (1, 0.367...), (2, 0.637...), (3, 0.808...), (4, 0.881..) ...
+    where the first number is the time in tenth of second and the second number the height in meter.
+
+    Task
+    Write a function max_ball with parameter v (in km per hour) that returns
+    the time in tenth of second of the maximum height recorded by the device.
+    https://www.codewars.com/kata/566be96bb3174e155300001b/train/java
+     */
+    public static int maxBall(int v0) {
+        double velocity = (double)v0*1000/3600;
+        java.util.ArrayList<Double> list = new java.util.ArrayList<>();
+        double time = 0;
+
+        while(time<500){
+            list.add(velocity*time - 0.5*9.81*time*time);
+            time +=0.1;
+        }
+
+        return list.indexOf(java.util.Collections.max(list));
     }
 }
