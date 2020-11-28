@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 public class CodewarsSolutions {
 
     public static void main(String[] args){
-        System.out.println(meeting("Fred:Corwill;Wilfred:Corwill;" +
-                "Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill"));
+        System.out.println(Arrays.toString(inArray(new String[]{"arp", "live", "strong"},
+                new String[]{"lively", "alive", "harp", "sharp", "armstrong"})));
     }
     
     static String alternateCase(final String string) {
@@ -761,5 +761,20 @@ public class CodewarsSolutions {
        return java.util.Arrays.stream(s.toUpperCase().split(";"))
                 .map(i -> "("+i.split(":")[1] + ", " + i.split(":")[0]+")")
                 .sorted().collect(java.util.stream.Collectors.joining());
+    }
+
+    /*
+    https://www.codewars.com/kata/550554fd08b86f84fe000a58/train/java
+    ["arp", "live", "strong"]
+    ["lively", "alive", "harp", "sharp", "armstrong"]
+    return ["arp", "live", "strong"]
+    Given two arrays of strings a1 and a2 return a sorted array r in lexicographical
+    order of the strings of a1 which are substrings of strings of a2.
+     */
+    public static String[] inArray(String[] array1, String[] array2) {
+
+        return java.util.Arrays.stream(array1)
+                .filter(i -> String.join("", array2).contains(i))
+                .distinct().sorted().toArray(String[]::new);
     }
 }
