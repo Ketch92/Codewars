@@ -843,4 +843,8 @@ public class CodewarsSolutions {
         return java.util.Arrays.stream(java.util.Arrays.copyOf(array, array.length-1))
                 .max().getAsInt();
     }
+
+    public static int findDeletedNumber(int[] arr, int[] mixedArr) {
+        //Your code here
+    }
 }
