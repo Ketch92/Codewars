@@ -833,4 +833,8 @@ public class CodewarsSolutions {
 
         return "Not !!";
     }
+
+    public int adjacentElementsProduct(int[] array) {
+        // your code here
+    }
 }
