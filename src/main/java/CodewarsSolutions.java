@@ -7,7 +7,7 @@ import java.util.stream.LongStream;
 public class CodewarsSolutions {
 
     public static void main(String[] args){
-        System.out.println(adjacentElementsProduct(new int[]{-23, 4, -5, 99, -27, 329, -2, 7, -921}));
+        System.out.println(findDeletedNumber(new int[]{1,2,3,4,5,6,7,8,9}, new int[]{3,2,4,6,7,8,1,9}));
     }
 
     static String alternateCase(final String string) {
@@ -843,8 +843,11 @@ public class CodewarsSolutions {
         return java.util.Arrays.stream(java.util.Arrays.copyOf(array, array.length-1))
                 .max().getAsInt();
     }
-
+    /*
+    https://www.codewars.com/kata/595aa94353e43a8746000120/train/java
+     */
     public static int findDeletedNumber(int[] arr, int[] mixedArr) {
-        //Your code here
+        java.util.Arrays.sort(mixedArr);
+        return java.util.Arrays.mismatch(arr, mixedArr) == -1 ? 0 : arr[java.util.Arrays.mismatch(arr, mixedArr)];
     }
 }
