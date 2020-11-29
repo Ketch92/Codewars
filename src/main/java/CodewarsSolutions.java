@@ -804,4 +804,5 @@ public class CodewarsSolutions {
         }
         return str2.isEmpty();
     }
+
 }
