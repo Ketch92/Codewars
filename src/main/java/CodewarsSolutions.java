@@ -805,4 +805,19 @@ public class CodewarsSolutions {
         return str2.isEmpty();
     }
 
+    public static Integer find(final int[] array) {
+
+        int counter = 0;
+
+        while (counter < array.length-1) {
+            if (array[counter]+1 == array[counter+1]) {
+                counter += 1;
+                continue;
+            } else {
+                return array[counter+1];
+            }
+        }
+
+        return null;
+    }
 }
