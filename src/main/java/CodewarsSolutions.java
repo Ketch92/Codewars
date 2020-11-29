@@ -1,9 +1,8 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.function.LongSupplier;
 import java.util.regex.MatchResult;
 import java.util.stream.Collectors;
+import java.util.stream.LongStream;
 
 public class CodewarsSolutions {
 
@@ -812,7 +811,6 @@ public class CodewarsSolutions {
         while (counter < array.length-1) {
             if (array[counter]+1 == array[counter+1]) {
                 counter += 1;
-                continue;
             } else {
                 return array[counter+1];
             }
