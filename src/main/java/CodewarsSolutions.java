@@ -7,7 +7,7 @@ import java.util.stream.LongStream;
 public class CodewarsSolutions {
 
     public static void main(String[] args){
-        System.out.println(adjacentElementsProduct(new int[]{-23, 4, -5, 99, -27, 329, -2, 7, -921}));
+        System.out.println(scramble("rkqodlw","world"));
     }
     
     static String alternateCase(final String string) {
@@ -834,13 +834,7 @@ public class CodewarsSolutions {
         return "Not !!";
     }
 
-    public static int adjacentElementsProduct(int[] array) {
-
-        for (int i = 0; i < array.length-1; i++) {
-            array[i] *= array[i+1];
-        }
-
-        return java.util.Arrays.stream(java.util.Arrays.copyOf(array, array.length-1))
-                .max().getAsInt();
+    public int adjacentElementsProduct(int[] array) {
+        // your code here
     }
 }
