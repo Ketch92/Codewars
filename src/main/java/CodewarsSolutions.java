@@ -818,4 +818,19 @@ public class CodewarsSolutions {
 
         return null;
     }
+
+    public static String disariumNumber(int number) {
+        int dis = 0;
+        double counter = 1;
+
+        for (String str: (number+"").split("")) {
+            dis += Math.pow(Double.parseDouble(str), counter++);
+        }
+
+        if (dis == number){
+            return "Disarium !!";
+        }
+
+        return "Not !!";
+    }
 }
