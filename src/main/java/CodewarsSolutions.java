@@ -2,12 +2,13 @@ import java.util.*;
 import java.util.function.LongSupplier;
 import java.util.regex.MatchResult;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
 public class CodewarsSolutions {
 
     public static void main(String[] args){
-        System.out.println(findDeletedNumber(new int[]{1,2,3,4,5,6,7,8,9}, new int[]{3,2,4,6,7,8,1,9}));
+        System.out.println(longestRepetitionV4("cbdeeeeuuu900000000"));
     }
 
     static String alternateCase(final String string) {
@@ -849,5 +850,38 @@ public class CodewarsSolutions {
     public static int findDeletedNumber(int[] arr, int[] mixedArr) {
         java.util.Arrays.sort(mixedArr);
         return java.util.Arrays.mismatch(arr, mixedArr) == -1 ? 0 : arr[java.util.Arrays.mismatch(arr, mixedArr)];
+    }
+
+    public static Object[] longestRepetitionV4(String s) {
+
+        if (s.isEmpty()) {
+            return new Object[]{"", 0};
+        }
+
+        int count = 1;
+        int maxCount = 0;
+        String character = Character.toString(s.charAt(0));
+        String maxCharacter = "";
+
+        for (int i = 1; i<s.toCharArray().length; i++) {
+            if (character.equals(Character.toString(s.charAt(i)))) {
+                count += 1;
+            } else {
+                if (maxCount<count) {
+                    maxCharacter = Character.toString(s.charAt(i-1));
+                    maxCount = count;
+                }
+                character = Character.toString(s.charAt(i));
+                count = 1;
+            }
+        }
+
+        if (maxCount<count) {
+            maxCharacter = character;
+            maxCount = count;
+        }
+
+//        System.out.println(maxCharacter + " " +maxCount);
+        return new Object[]{maxCharacter, maxCount};
     }
 }
