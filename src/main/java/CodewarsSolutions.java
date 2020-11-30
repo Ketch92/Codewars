@@ -8,7 +8,7 @@ import java.util.stream.LongStream;
 public class CodewarsSolutions {
 
     public static void main(String[] args){
-        System.out.println(longestRepetitionV4("cbdeeeeuuu900000000"));
+        System.out.println(countingSheep(2));
     }
 
     static String alternateCase(final String string) {
@@ -883,5 +883,10 @@ public class CodewarsSolutions {
 
 //        System.out.println(maxCharacter + " " +maxCount);
         return new Object[]{maxCharacter, maxCount};
+    }
+
+    public static String countingSheep(int num) {
+        return java.util.stream.IntStream.range(1, num+1)
+                .mapToObj(i -> i + " sheep...").collect(java.util.stream.Collectors.joining());
     }
 }
